@@ -1,0 +1,89 @@
+<html> 
+<head> 
+	<title> Leave Countdown </title>
+	<style>
+	.dayBlock {
+  border: 1px solid black;
+  width: 10%;
+  height: 250px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 50px;
+  display: inline-block;
+  line-height: 240px;
+}
+
+.dayBlock-container {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+
+.container {
+    vertical-align: middle;
+    text-align: center;
+    padding: 20px;
+    margin-top: 25vh;
+}
+	</style>
+</head>
+<body> 
+<div class='container'>
+<h1 align='center'> Days until i'm on leave! </h1>
+
+<div class='dayBlock-container'> 
+<div class='dayBlock' id='d4'>  </div>
+<div class='dayBlock' id='d3'>  </div>
+<div class='dayBlock' id='d2'> </div>
+<div class='dayBlock' id='d1'> </div>
+</div>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js'> </script>
+
+<script>
+const now = moment();
+let christmas = moment("Dec 24", "MMM DD");
+if ( christmas.isBefore(now, 'days') ) {
+  christmas = christmas.add(1, 'year');
+}
+let diff = christmas.diff(now, 'days');
+let d1 = document.getElementById('d1');
+let d2 = document.getElementById('d2');
+let d3 = document.getElementById('d3');
+let d4 = document.getElementById('d4');
+
+let days = diff.toString();
+const numberOfDigits = days.split('').length;
+let dayArray = days.split('');
+switch(numberOfDigits) {
+  case 1:
+    d4.innerHTML = 0;
+    d3.innerHTML = 0;
+    d2.innerHTML = 0;
+    d1.innerHTML = dayArray[0];
+    break;
+  case 2:
+    d4.innerHTML = 0;
+    d3.innerHTML = 0;
+    d2.innerHTML = dayArray[0];
+    d1.innerHTML = dayArray[1];
+    break;
+  case 3:
+    d4.innerHTML = 0;
+    d3.innerHTML = dayArray[0];
+    d2.innerHTML = dayArray[1];
+    d1.innerHTML = dayArray[2];
+    break;
+  case 4:
+    d4.innerHTML = dayArray[0];
+    d3.innerHTML = dayArray[1];
+    d2.innerHTML = dayArray[2];
+    d1.innerHTML = dayArray[3];
+    break;
+}
+
+
+</script>
+</body>
+
+</html>
